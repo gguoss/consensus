@@ -46,7 +46,7 @@ func init() {
 // Users wishing to:
 //	* Use an external signer for their validators
 //	* Supply an in-proc abci app
-// should import github.com/tendermint/tendermint/node and implement
+// should import github.com/consensus/node and implement
 // their own run_node to call node.NewNode (instead of node.NewNodeDefault)
 // with their custom priv validator and/or custom proxy.ClientCreator
 func runNode(cmd *cobra.Command, args []string) error {
