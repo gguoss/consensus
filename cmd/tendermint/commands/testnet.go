@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 
 	cmn "github.com/tendermint/tmlibs/common"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/types"
 )
 
 var testnetFilesCmd = &cobra.Command{

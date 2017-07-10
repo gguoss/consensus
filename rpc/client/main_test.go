@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	meapp "github.com/tendermint/merkleeyes/app"
-	nm "github.com/tendermint/tendermint/node"
-	rpctest "github.com/tendermint/tendermint/rpc/test"
+	nm "github.com/consensus/node"
+	rpctest "github.com/consensus/rpc/test"
 )
 
 var node *nm.Node

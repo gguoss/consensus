@@ -9,8 +9,8 @@ import (
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/abci/types"
 	db "github.com/tendermint/tmlibs/db"
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/state/txindex"
+	"github.com/consensus/types"
 )
 
 func TestTxIndex(t *testing.T) {

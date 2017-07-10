@@ -7,8 +7,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/tendermint/tendermint/node"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/node"
+	"github.com/consensus/types"
 	cmn "github.com/tendermint/tmlibs/common"
 )
 

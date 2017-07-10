@@ -7,8 +7,8 @@ import (
 	"github.com/tendermint/go-crypto"
 	"github.com/tendermint/go-wire/data"
 
-	"github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/p2p"
+	"github.com/consensus/types"
 )
 
 type ResultBlockchainInfo struct {

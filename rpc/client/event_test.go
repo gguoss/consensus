@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 	merktest "github.com/tendermint/merkleeyes/testutil"
-	"github.com/tendermint/tendermint/rpc/client"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/rpc/client"
+	"github.com/consensus/types"
 )
 
 func TestHeaderEvents(t *testing.T) {

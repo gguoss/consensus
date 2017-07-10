@@ -6,8 +6,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	tmflags "github.com/tendermint/tendermint/cmd/tendermint/commands/flags"
-	cfg "github.com/tendermint/tendermint/config"
+	tmflags "github.com/consensus/cmd/tendermint/commands/flags"
+	cfg "github.com/consensus/config"
 	"github.com/tendermint/tmlibs/log"
 )
 
@@ -21,8 +21,8 @@ func init() {
 }
 
 var RootCmd = &cobra.Command{
-	Use:   "tendermint",
-	Short: "Tendermint Core (BFT Consensus) in Go",
+	Use:   "consensus",
+	Short: "consensus in Go",
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 		err := viper.Unmarshal(config)
 		if err != nil {

@@ -2,8 +2,8 @@ package core
 
 import (
 	data "github.com/tendermint/go-wire/data"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	ctypes "github.com/consensus/rpc/core/types"
+	"github.com/consensus/types"
 )
 
 func Status() (*ctypes.ResultStatus, error) {

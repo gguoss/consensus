@@ -16,9 +16,9 @@ import (
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/log"
 
-	"github.com/tendermint/tendermint/proxy"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/proxy"
+	sm "github.com/consensus/state"
+	"github.com/consensus/types"
 )
 
 // Functionality to replay blocks and messages on recovery from a crash.

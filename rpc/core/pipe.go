@@ -2,11 +2,11 @@ package core
 
 import (
 	crypto "github.com/tendermint/go-crypto"
-	"github.com/tendermint/tendermint/consensus"
-	p2p "github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/consensus"
+	p2p "github.com/consensus/p2p"
+	"github.com/consensus/proxy"
+	"github.com/consensus/state/txindex"
+	"github.com/consensus/types"
 	"github.com/tendermint/tmlibs/log"
 )
 

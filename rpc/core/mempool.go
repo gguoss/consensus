@@ -6,8 +6,8 @@ import (
 
 	abci "github.com/tendermint/abci/types"
 	data "github.com/tendermint/go-wire/data"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	ctypes "github.com/consensus/rpc/core/types"
+	"github.com/consensus/types"
 )
 
 //-----------------------------------------------------------------------------

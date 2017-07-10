@@ -7,9 +7,9 @@ import (
 	fail "github.com/ebuchman/fail-test"
 	abci "github.com/tendermint/abci/types"
 	crypto "github.com/tendermint/go-crypto"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/proxy"
+	"github.com/consensus/state/txindex"
+	"github.com/consensus/types"
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/log"
 )

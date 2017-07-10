@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	tmflags "github.com/tendermint/tendermint/cmd/tendermint/commands/flags"
+	tmflags "github.com/consensus/cmd/tendermint/commands/flags"
 	"github.com/tendermint/tmlibs/log"
 )
 

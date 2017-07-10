@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/tendermint/tendermint/cmd/tendermint/commands"
+	"github.com/consensus/cmd/tendermint/commands"
 	"github.com/tendermint/tmlibs/cli"
 )
 

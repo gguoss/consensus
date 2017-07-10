@@ -1,7 +1,7 @@
 package consensus
 
 import (
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/types"
 )
 
 // XXX: WARNING: these functions can halt the consensus as firing events is synchronous.

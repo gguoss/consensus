@@ -3,8 +3,8 @@ package core
 import (
 	"fmt"
 
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	ctypes "github.com/consensus/rpc/core/types"
+	"github.com/consensus/types"
 	. "github.com/tendermint/tmlibs/common"
 )
 

@@ -3,9 +3,9 @@ package core
 import (
 	"fmt"
 
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/state/txindex/null"
-	"github.com/tendermint/tendermint/types"
+	ctypes "github.com/consensus/rpc/core/types"
+	"github.com/consensus/state/txindex/null"
+	"github.com/consensus/types"
 )
 
 // Tx allow user to query the transaction results. `nil` could mean the

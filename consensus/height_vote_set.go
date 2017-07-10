@@ -4,7 +4,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/types"
 	. "github.com/tendermint/tmlibs/common"
 )
 

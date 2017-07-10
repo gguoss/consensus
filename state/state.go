@@ -12,9 +12,9 @@ import (
 	"github.com/tendermint/tmlibs/log"
 
 	wire "github.com/tendermint/go-wire"
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/state/txindex/null"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/state/txindex"
+	"github.com/consensus/state/txindex/null"
+	"github.com/consensus/types"
 )
 
 var (

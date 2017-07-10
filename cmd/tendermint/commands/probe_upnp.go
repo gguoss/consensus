@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/tendermint/tendermint/p2p/upnp"
+	"github.com/consensus/p2p/upnp"
 )
 
 var probeUpnpCmd = &cobra.Command{

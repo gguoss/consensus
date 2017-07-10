@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/p2p"
+	"github.com/consensus/types"
 	. "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/events"
 )

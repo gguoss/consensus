@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	cfg "github.com/tendermint/tendermint/config"
+	cfg "github.com/consensus/config"
 	"github.com/tendermint/tmlibs/cli"
 
 	"testing"

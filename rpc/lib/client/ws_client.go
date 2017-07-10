@@ -8,7 +8,7 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
-	types "github.com/tendermint/tendermint/rpc/lib/types"
+	types "github.com/consensus/rpc/lib/types"
 	cmn "github.com/tendermint/tmlibs/common"
 )
 

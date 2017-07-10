@@ -7,10 +7,10 @@ import (
 	"time"
 
 	wire "github.com/tendermint/go-wire"
-	"github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/proxy"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/p2p"
+	"github.com/consensus/proxy"
+	sm "github.com/consensus/state"
+	"github.com/consensus/types"
 	cmn "github.com/tendermint/tmlibs/common"
 )
 

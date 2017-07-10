@@ -1,7 +1,7 @@
 package core_grpc
 
 import (
-	core "github.com/tendermint/tendermint/rpc/core"
+	core "github.com/consensus/rpc/core"
 
 	abci "github.com/tendermint/abci/types"
 

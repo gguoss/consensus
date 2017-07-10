@@ -7,9 +7,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/abci/example/dummy"
 	crypto "github.com/tendermint/go-crypto"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/proxy"
+	"github.com/consensus/state/txindex"
+	"github.com/consensus/types"
 	dbm "github.com/tendermint/tmlibs/db"
 	"github.com/tendermint/tmlibs/log"
 )

@@ -3,7 +3,7 @@ package commands
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/tendermint/tendermint/consensus"
+	"github.com/consensus/consensus"
 )
 
 var replayCmd = &cobra.Command{

@@ -3,7 +3,7 @@ package txindex
 import (
 	"errors"
 
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/types"
 )
 
 // Indexer interface defines methods to index and search transactions.

@@ -9,9 +9,9 @@ import (
 	"time"
 
 	wire "github.com/tendermint/go-wire"
-	"github.com/tendermint/tendermint/p2p"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/p2p"
+	sm "github.com/consensus/state"
+	"github.com/consensus/types"
 	. "github.com/tendermint/tmlibs/common"
 )
 

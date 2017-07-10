@@ -8,7 +8,7 @@ import (
 	"time"
 
 	crypto "github.com/tendermint/go-crypto"
-	cfg "github.com/tendermint/tendermint/config"
+	cfg "github.com/consensus/config"
 	cmn "github.com/tendermint/tmlibs/common"
 )
 

@@ -18,10 +18,10 @@ import (
 	cmn "github.com/tendermint/tmlibs/common"
 	dbm "github.com/tendermint/tmlibs/db"
 
-	cfg "github.com/tendermint/tendermint/config"
-	"github.com/tendermint/tendermint/proxy"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	cfg "github.com/consensus/config"
+	"github.com/consensus/proxy"
+	sm "github.com/consensus/state"
+	"github.com/consensus/types"
 	"github.com/tendermint/tmlibs/log"
 )
 
@@ -43,7 +43,7 @@ func init() {
 // after running it (eg. sometimes small_block2 will have 5 block parts, sometimes 6).
 // It should only have to be re-run if there is some breaking change to the consensus data structures (eg. blocks, votes)
 // or to the behaviour of the app (eg. computes app hash differently)
-var data_dir = path.Join(cmn.GoPath, "src/github.com/tendermint/tendermint/consensus", "test_data")
+var data_dir = path.Join(cmn.GoPath, "src/github.com/consensus/consensus", "test_data")
 
 //------------------------------------------------------------------------------------------
 // WAL Tests

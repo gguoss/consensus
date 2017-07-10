@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"strings"
 
-	bc "github.com/tendermint/tendermint/blockchain"
-	cfg "github.com/tendermint/tendermint/config"
-	"github.com/tendermint/tendermint/proxy"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	bc "github.com/consensus/blockchain"
+	cfg "github.com/consensus/config"
+	"github.com/consensus/proxy"
+	sm "github.com/consensus/state"
+	"github.com/consensus/types"
 	cmn "github.com/tendermint/tmlibs/common"
 	dbm "github.com/tendermint/tmlibs/db"
 )

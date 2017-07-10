@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/tendermint/abci/example/dummy"
-	"github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/p2p"
+	"github.com/consensus/types"
 	"github.com/tendermint/tmlibs/events"
 )
 

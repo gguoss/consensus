@@ -4,7 +4,7 @@ import (
 	"time"
 
 	wire "github.com/tendermint/go-wire"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/types"
 	auto "github.com/tendermint/tmlibs/autofile"
 	. "github.com/tendermint/tmlibs/common"
 )

@@ -10,9 +10,9 @@ import (
 	wire "github.com/tendermint/go-wire"
 	"github.com/tendermint/tmlibs/clist"
 
-	cfg "github.com/tendermint/tendermint/config"
-	"github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/types"
+	cfg "github.com/consensus/config"
+	"github.com/consensus/p2p"
+	"github.com/consensus/types"
 )
 
 const (

@@ -15,9 +15,9 @@ import (
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/log"
 
-	cfg "github.com/tendermint/tendermint/config"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/types"
+	cfg "github.com/consensus/config"
+	"github.com/consensus/proxy"
+	"github.com/consensus/types"
 )
 
 /*

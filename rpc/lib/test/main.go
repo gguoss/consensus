@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	rpcserver "github.com/tendermint/tendermint/rpc/lib/server"
+	rpcserver "github.com/consensus/rpc/lib/server"
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/log"
 )

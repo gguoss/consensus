@@ -11,10 +11,10 @@ import (
 
 	fail "github.com/ebuchman/fail-test"
 	wire "github.com/tendermint/go-wire"
-	cfg "github.com/tendermint/tendermint/config"
-	"github.com/tendermint/tendermint/proxy"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	cfg "github.com/consensus/config"
+	"github.com/consensus/proxy"
+	sm "github.com/consensus/state"
+	"github.com/consensus/types"
 	cmn "github.com/tendermint/tmlibs/common"
 	"github.com/tendermint/tmlibs/log"
 )

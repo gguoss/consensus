@@ -2,10 +2,10 @@ package client
 
 import (
 	data "github.com/tendermint/go-wire/data"
-	nm "github.com/tendermint/tendermint/node"
-	"github.com/tendermint/tendermint/rpc/core"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	nm "github.com/consensus/node"
+	"github.com/consensus/rpc/core"
+	ctypes "github.com/consensus/rpc/core/types"
+	"github.com/consensus/types"
 )
 
 /*

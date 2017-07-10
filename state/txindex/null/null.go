@@ -3,8 +3,8 @@ package null
 import (
 	"errors"
 
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/state/txindex"
+	"github.com/consensus/types"
 )
 
 // TxIndex acts as a /dev/null.

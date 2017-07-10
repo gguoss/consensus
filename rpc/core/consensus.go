@@ -2,9 +2,9 @@ package core
 
 import (
 	"github.com/tendermint/go-wire"
-	cm "github.com/tendermint/tendermint/consensus"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	cm "github.com/consensus/consensus"
+	ctypes "github.com/consensus/rpc/core/types"
+	"github.com/consensus/types"
 )
 
 func Validators() (*ctypes.ResultValidators, error) {
