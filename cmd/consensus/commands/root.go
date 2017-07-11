@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	tmflags "github.com/consensus/cmd/tendermint/commands/flags"
+	tmflags "github.com/consensus/cmd/consensus/commands/flags"
 	cfg "github.com/consensus/config"
 	"github.com/tendermint/tmlibs/log"
 )

@@ -7,20 +7,20 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/consensus/node"
+	"github.com/consensus/node_p2p"
 	"github.com/consensus/types"
 	cmn "github.com/tendermint/tmlibs/common"
 )
 
 var runNodeCmd = &cobra.Command{
-	Use:   "node",
-	Short: "Run the tendermint node",
+	Use:   "node_p2p",
+	Short: "Run the no consensus node",
 	RunE:  runNode,
 }
 
 func init() {
 	// bind flags
-	runNodeCmd.Flags().String("moniker", config.Moniker, "Node Name")
+	/*runNodeCmd.Flags().String("moniker", config.Moniker, "Node Name")
 
 	// node flags
 	runNodeCmd.Flags().Bool("fast_sync", config.FastSync, "Fast blockchain syncing")
@@ -39,16 +39,11 @@ func init() {
 	runNodeCmd.Flags().String("p2p.seeds", config.P2P.Seeds, "Comma delimited host:port seed nodes")
 	runNodeCmd.Flags().Bool("p2p.skip_upnp", config.P2P.SkipUPNP, "Skip UPNP configuration")
 	runNodeCmd.Flags().Bool("p2p.pex", config.P2P.PexReactor, "Enable Peer-Exchange (dev feature)")
+    */
 
 	RootCmd.AddCommand(runNodeCmd)
 }
 
-// Users wishing to:
-//	* Use an external signer for their validators
-//	* Supply an in-proc abci app
-// should import github.com/consensus/node and implement
-// their own run_node to call node.NewNode (instead of node.NewNodeDefault)
-// with their custom priv validator and/or custom proxy.ClientCreator
 func runNode(cmd *cobra.Command, args []string) error {
 
 	// Wait until the genesis doc becomes available
@@ -79,7 +74,7 @@ func runNode(cmd *cobra.Command, args []string) error {
 	}
 
 	// Create & start node
-	n := node.NewNodeDefault(config, logger.With("module", "node"))
+	n := node_p2p.NewNodeDefault(config, logger.With("module", "node_p2p"))
 	if _, err := n.Start(); err != nil {
 		return fmt.Errorf("Failed to start node: %v", err)
 	} else {
