@@ -11,7 +11,7 @@ import (
 
 var initFilesCmd = &cobra.Command{
 	Use:   "init",
-	Short: "Initialize Tendermint",
+	Short: "Initialize consensus",
 	Run:   initFiles,
 }
 
@@ -30,7 +30,7 @@ func initFiles(cmd *cobra.Command, args []string) {
 
 		if _, err := os.Stat(genFile); os.IsNotExist(err) {
 			genDoc := types.GenesisDoc{
-				ChainID: cmn.Fmt("test-chain-%v", cmn.RandStr(6)),
+				ChainID: cmn.Fmt("chain0"),
 			}
 			genDoc.Validators = []types.GenesisValidator{types.GenesisValidator{
 				PubKey: privValidator.PubKey,

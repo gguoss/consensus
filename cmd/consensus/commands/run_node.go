@@ -19,27 +19,11 @@ var runNodeCmd = &cobra.Command{
 }
 
 func init() {
-	// bind flags
-	/*runNodeCmd.Flags().String("moniker", config.Moniker, "Node Name")
-
-	// node flags
-	runNodeCmd.Flags().Bool("fast_sync", config.FastSync, "Fast blockchain syncing")
-
-	// abci flags
-	runNodeCmd.Flags().String("proxy_app", config.ProxyApp, "Proxy app address, or 'nilapp' or 'dummy' for local testing.")
-	runNodeCmd.Flags().String("abci", config.ABCI, "Specify abci transport (socket | grpc)")
-
-	// rpc flags
-	runNodeCmd.Flags().String("rpc.laddr", config.RPC.ListenAddress, "RPC listen address. Port required")
-	runNodeCmd.Flags().String("rpc.grpc_laddr", config.RPC.GRPCListenAddress, "GRPC listen address (BroadcastTx only). Port required")
-	runNodeCmd.Flags().Bool("rpc.unsafe", config.RPC.Unsafe, "Enabled unsafe rpc methods")
-
 	// p2p flags
 	runNodeCmd.Flags().String("p2p.laddr", config.P2P.ListenAddress, "Node listen address. (0.0.0.0:0 means any interface, any port)")
 	runNodeCmd.Flags().String("p2p.seeds", config.P2P.Seeds, "Comma delimited host:port seed nodes")
 	runNodeCmd.Flags().Bool("p2p.skip_upnp", config.P2P.SkipUPNP, "Skip UPNP configuration")
 	runNodeCmd.Flags().Bool("p2p.pex", config.P2P.PexReactor, "Enable Peer-Exchange (dev feature)")
-    */
 
 	RootCmd.AddCommand(runNodeCmd)
 }

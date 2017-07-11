@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	cmd := cli.PrepareBaseCmd(commands.RootCmd, "TM", os.ExpandEnv("$HOME/.consensus"))
+	cmd := cli.PrepareBaseCmd(commands.RootCmd, "TM", os.ExpandEnv("./.consensus"))
 	cmd.Execute()
 }

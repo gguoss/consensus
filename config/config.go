@@ -141,7 +141,7 @@ func (b BaseConfig) DBDir() string {
 }
 
 func DefaultLogLevel() string {
-	return "error"
+	return "info"
 }
 
 func DefaultPackageLogLevels() string {
