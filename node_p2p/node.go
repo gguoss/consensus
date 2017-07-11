@@ -1,33 +1,33 @@
 package node_p2p
 
 import (
-	"bytes"
-	"errors"
-	"net"
+//	"bytes"
+//	"errors"
+//	"net"
 	"net/http"
 	"strings"
 
-	abci "github.com/tendermint/abci/types"
+//	abci "github.com/tendermint/abci/types"
 	crypto "github.com/tendermint/go-crypto"
 	wire "github.com/tendermint/go-wire"
-	bc "github.com/consensus/blockchain"
+//	bc "github.com/consensus/blockchain"
 	cfg "github.com/consensus/config"
-	"github.com/consensus/consensus"
-	mempl "github.com/consensus/mempool"
+//	"github.com/consensus/consensus"
+//	mempl "github.com/consensus/mempool"
 	p2p "github.com/consensus/p2p"
-	"github.com/consensus/proxy"
-	rpccore "github.com/consensus/rpc/core"
-	grpccore "github.com/consensus/rpc/grpc"
-	rpc "github.com/consensus/rpc/lib"
-	rpcserver "github.com/consensus/rpc/lib/server"
-	sm "github.com/consensus/state"
-	"github.com/consensus/state/txindex"
-	"github.com/consensus/state/txindex/kv"
-	"github.com/consensus/state/txindex/null"
+//	"github.com/consensus/proxy"
+//	rpccore "github.com/consensus/rpc/core"
+//	grpccore "github.com/consensus/rpc/grpc"
+//	rpc "github.com/consensus/rpc/lib"
+//	rpcserver "github.com/consensus/rpc/lib/server"
+//	sm "github.com/consensus/state"
+//	"github.com/consensus/state/txindex"
+//	"github.com/consensus/state/txindex/kv"
+//	"github.com/consensus/state/txindex/null"
 	"github.com/consensus/types"
 	"github.com/consensus/version"
 	cmn "github.com/tendermint/tmlibs/common"
-	dbm "github.com/tendermint/tmlibs/db"
+//	dbm "github.com/tendermint/tmlibs/db"
 	"github.com/tendermint/tmlibs/log"
 
 	_ "net/http/pprof"
@@ -38,7 +38,7 @@ type Node struct {
 
 	// config
 	config        *cfg.Config
-	genesisDoc    *types.GenesisDoc    // initial validator set
+	//genesisDoc    *types.GenesisDoc    // initial validator set
 	privValidator *types.PrivValidator // local node's validator key
 
 	// network
@@ -48,60 +48,59 @@ type Node struct {
 
 	// services
 	evsw             types.EventSwitch           // pub/sub for services
-	blockStore       *bc.BlockStore              // store the blockchain to disk
-	bcReactor        *bc.BlockchainReactor       // for fast-syncing
-	mempoolReactor   *mempl.MempoolReactor       // for gossipping transactions
-	consensusState   *consensus.ConsensusState   // latest consensus state
-	consensusReactor *consensus.ConsensusReactor // for participating in the consensus
-	proxyApp         proxy.AppConns              // connection to the application
-	rpcListeners     []net.Listener              // rpc servers
-	txIndexer        txindex.TxIndexer
+//	blockStore       *bc.BlockStore              // store the blockchain to disk
+//	bcReactor        *bc.BlockchainReactor       // for fast-syncing
+//	mempoolReactor   *mempl.MempoolReactor       // for gossipping transactions
+//	consensusState   *consensus.ConsensusState   // latest consensus state
+//	consensusReactor *consensus.ConsensusReactor // for participating in the consensus
+//	proxyApp         proxy.AppConns              // connection to the application
+//	rpcListeners     []net.Listener              // rpc servers
+//	txIndexer        txindex.TxIndexer
 }
 
 func NewNodeDefault(config *cfg.Config, logger log.Logger) *Node {
 	// Get PrivValidator
 	privValidator := types.LoadOrGenPrivValidator(config.PrivValidatorFile(), logger)
-	return NewNode(config, privValidator,
-		proxy.DefaultClientCreator(config.ProxyApp, config.ABCI, config.DBDir()), logger)
+	return NewNode(config, privValidator, logger)
 }
 
-func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreator proxy.ClientCreator, logger log.Logger) *Node {
+func NewNode(config *cfg.Config, privValidator *types.PrivValidator, logger log.Logger) *Node {
 	// Get BlockStore
-	blockStoreDB := dbm.NewDB("blockstore", config.DBBackend, config.DBDir())
-	blockStore := bc.NewBlockStore(blockStoreDB)
+	//blockStoreDB := dbm.NewDB("blockstore", config.DBBackend, config.DBDir())
+	//blockStore := bc.NewBlockStore(blockStoreDB)
 
-	consensusLogger := logger.With("module", "consensus")
-	stateLogger := logger.With("module", "state")
+	//consensusLogger := logger.With("module", "consensus")
+	//stateLogger := logger.With("module", "state")
 
 	// Get State
-	stateDB := dbm.NewDB("state", config.DBBackend, config.DBDir())
-	state := sm.GetState(stateDB, config.GenesisFile())
-	state.SetLogger(stateLogger)
+	//stateDB := dbm.NewDB("state", config.DBBackend, config.DBDir())
+	//state := sm.GetState(stateDB, config.GenesisFile())
+	//state.SetLogger(stateLogger)
 
 	// Create the proxyApp, which manages connections (consensus, mempool, query)
 	// and sync tendermint and the app by replaying any necessary blocks
-	handshaker := consensus.NewHandshaker(state, blockStore)
-	handshaker.SetLogger(consensusLogger)
-	proxyApp := proxy.NewAppConns(clientCreator, handshaker)
-	proxyApp.SetLogger(logger.With("module", "proxy"))
-	if _, err := proxyApp.Start(); err != nil {
-		cmn.Exit(cmn.Fmt("Error starting proxy app connections: %v", err))
-	}
+	//handshaker := consensus.NewHandshaker(state, blockStore)
+	//handshaker.SetLogger(consensusLogger)
+	//proxyApp := proxy.NewAppConns(clientCreator, handshaker)
+	//proxyApp.SetLogger(logger.With("module", "proxy"))
+	//if _, err := proxyApp.Start(); err != nil {
+	//	cmn.Exit(cmn.Fmt("Error starting proxy app connections: %v", err))
+	//}
 
 	// reload the state (it may have been updated by the handshake)
-	state = sm.LoadState(stateDB)
-	state.SetLogger(stateLogger)
+	//state = sm.LoadState(stateDB)
+	//state.SetLogger(stateLogger)
 
 	// Transaction indexing
-	var txIndexer txindex.TxIndexer
-	switch config.TxIndex {
-	case "kv":
-		store := dbm.NewDB("tx_index", config.DBBackend, config.DBDir())
-		txIndexer = kv.NewTxIndex(store)
-	default:
-		txIndexer = &null.TxIndex{}
-	}
-	state.TxIndexer = txIndexer
+	//var txIndexer txindex.TxIndexer
+	//switch config.TxIndex {
+	//case "kv":
+	//	store := dbm.NewDB("tx_index", config.DBBackend, config.DBDir())
+	//	txIndexer = kv.NewTxIndex(store)
+	//default:
+	//	txIndexer = &null.TxIndex{}
+	//}
+	//state.TxIndexer = txIndexer
 
 	// Generate node PrivKey
 	privKey := crypto.GenPrivKeyEd25519()
@@ -116,16 +115,16 @@ func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreat
 
 	// Decide whether to fast-sync or not
 	// We don't fast-sync when the only validator is us.
-	fastSync := config.FastSync
+	/*fastSync := config.FastSync
 	if state.Validators.Size() == 1 {
 		addr, _ := state.Validators.GetByIndex(0)
 		if bytes.Equal(privValidator.Address, addr) {
 			fastSync = false
 		}
-	}
+	}*/
 
 	// Log whether this node is a validator or an observer
-	if state.Validators.HasAddress(privValidator.Address) {
+	/*if state.Validators.HasAddress(privValidator.Address) {
 		consensusLogger.Info("This node is a validator")
 	} else {
 		consensusLogger.Info("This node is not a validator")
@@ -150,14 +149,16 @@ func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreat
 	}
 	consensusReactor := consensus.NewConsensusReactor(consensusState, fastSync)
 	consensusReactor.SetLogger(consensusLogger)
+    */
 
 	p2pLogger := logger.With("module", "p2p")
 
 	sw := p2p.NewSwitch(config.P2P)
 	sw.SetLogger(p2pLogger)
-	sw.AddReactor("MEMPOOL", mempoolReactor)
+	/*sw.AddReactor("MEMPOOL", mempoolReactor)
 	sw.AddReactor("BLOCKCHAIN", bcReactor)
 	sw.AddReactor("CONSENSUS", consensusReactor)
+    */
 
 	// Optionally, start the pex reactor
 	var addrBook *p2p.AddrBook
@@ -172,7 +173,7 @@ func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreat
 	// Filter peers by addr or pubkey with an ABCI query.
 	// If the query return code is OK, add peer.
 	// XXX: Query format subject to change
-	if config.FilterPeers {
+	/*if config.FilterPeers {
 		// NOTE: addr is ip:port
 		sw.SetAddrFilter(func(addr net.Addr) error {
 			resQuery, err := proxyApp.Query().QuerySync(abci.RequestQuery{Path: cmn.Fmt("/p2p/filter/addr/%s", addr.String())})
@@ -194,11 +195,11 @@ func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreat
 			}
 			return errors.New(resQuery.Code.String())
 		})
-	}
+	}*/
 
 	// add the event switch to all services
 	// they should all satisfy events.Eventable
-	SetEventSwitch(eventSwitch, bcReactor, mempoolReactor, consensusReactor)
+	//SetEventSwitch(eventSwitch, bcReactor, mempoolReactor, consensusReactor)
 
 	// run the profile server
 	profileHost := config.ProfListenAddress
@@ -211,7 +212,7 @@ func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreat
 
 	node := &Node{
 		config:        config,
-		genesisDoc:    state.GenesisDoc,
+//		genesisDoc:    state.GenesisDoc,
 		privValidator: privValidator,
 
 		privKey:  privKey,
@@ -219,13 +220,13 @@ func NewNode(config *cfg.Config, privValidator *types.PrivValidator, clientCreat
 		addrBook: addrBook,
 
 		evsw:             eventSwitch,
-		blockStore:       blockStore,
-		bcReactor:        bcReactor,
-		mempoolReactor:   mempoolReactor,
-		consensusState:   consensusState,
-		consensusReactor: consensusReactor,
-		proxyApp:         proxyApp,
-		txIndexer:        txIndexer,
+	//	blockStore:       blockStore,
+	//	bcReactor:        bcReactor,
+	//	mempoolReactor:   mempoolReactor,
+	//	consensusState:   consensusState,
+	//	consensusReactor: consensusReactor,
+	//	proxyApp:         proxyApp,
+	//	txIndexer:        txIndexer,
 	}
 	node.BaseService = *cmn.NewBaseService(logger, "Node", node)
 	return node
@@ -255,13 +256,13 @@ func (n *Node) OnStart() error {
 	}
 
 	// Run the RPC server
-	if n.config.RPC.ListenAddress != "" {
+	/*if n.config.RPC.ListenAddress != "" {
 		listeners, err := n.startRPC()
 		if err != nil {
 			return err
 		}
 		n.rpcListeners = listeners
-	}
+	}*/
 
 	return nil
 }
@@ -273,12 +274,12 @@ func (n *Node) OnStop() {
 	// TODO: gracefully disconnect from peers.
 	n.sw.Stop()
 
-	for _, l := range n.rpcListeners {
+	/*for _, l := range n.rpcListeners {
 		n.Logger.Info("Closing rpc listener", "listener", l)
 		if err := l.Close(); err != nil {
 			n.Logger.Error("Error closing listener", "listener", l, "error", err)
 		}
-	}
+	}*/
 }
 
 func (n *Node) RunForever() {
@@ -304,7 +305,7 @@ func (n *Node) AddListener(l p2p.Listener) {
 
 // ConfigureRPC sets all variables in rpccore so they will serve
 // rpc calls from this node
-func (n *Node) ConfigureRPC() {
+/*func (n *Node) ConfigureRPC() {
 	rpccore.SetEventSwitch(n.evsw)
 	rpccore.SetBlockStore(n.blockStore)
 	rpccore.SetConsensusState(n.consensusState)
@@ -354,12 +355,13 @@ func (n *Node) startRPC() ([]net.Listener, error) {
 
 	return listeners, nil
 }
+*/
 
 func (n *Node) Switch() *p2p.Switch {
 	return n.sw
 }
 
-func (n *Node) BlockStore() *bc.BlockStore {
+/*func (n *Node) BlockStore() *bc.BlockStore {
 	return n.blockStore
 }
 
@@ -374,6 +376,7 @@ func (n *Node) ConsensusReactor() *consensus.ConsensusReactor {
 func (n *Node) MempoolReactor() *mempl.MempoolReactor {
 	return n.mempoolReactor
 }
+*/
 
 func (n *Node) EventSwitch() types.EventSwitch {
 	return n.evsw
@@ -384,31 +387,31 @@ func (n *Node) PrivValidator() *types.PrivValidator {
 	return n.privValidator
 }
 
-func (n *Node) GenesisDoc() *types.GenesisDoc {
+/*func (n *Node) GenesisDoc() *types.GenesisDoc {
 	return n.genesisDoc
-}
+}*/
 
-func (n *Node) ProxyApp() proxy.AppConns {
+/*func (n *Node) ProxyApp() proxy.AppConns {
 	return n.proxyApp
-}
+}*/
 
 func (n *Node) makeNodeInfo() *p2p.NodeInfo {
-	txIndexerStatus := "on"
+	/*txIndexerStatus := "on"
 	if _, ok := n.txIndexer.(*null.TxIndex); ok {
 		txIndexerStatus = "off"
-	}
+	}*/
 
 	nodeInfo := &p2p.NodeInfo{
 		PubKey:  n.privKey.PubKey().Unwrap().(crypto.PubKeyEd25519),
 		Moniker: n.config.Moniker,
-		Network: n.consensusState.GetState().ChainID,
+		Network: "chain0",
 		Version: version.Version,
 		Other: []string{
 			cmn.Fmt("wire_version=%v", wire.Version),
 			cmn.Fmt("p2p_version=%v", p2p.Version),
-			cmn.Fmt("consensus_version=%v", consensus.Version),
-			cmn.Fmt("rpc_version=%v/%v", rpc.Version, rpccore.Version),
-			cmn.Fmt("tx_index=%v", txIndexerStatus),
+			//cmn.Fmt("consensus_version=%v", consensus.Version),
+			//cmn.Fmt("rpc_version=%v/%v", rpc.Version, rpccore.Version),
+			//cmn.Fmt("tx_index=%v", txIndexerStatus),
 		},
 	}
 
