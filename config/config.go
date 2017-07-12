@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/tendermint/tendermint/types"
+	"github.com/consensus/types"
 )
 
 type Config struct {

@@ -11,9 +11,15 @@ install: get_vendor_deps
 	@go install --ldflags '-extldflags "-static"' \
 		--ldflags "-X github.com/tendermint/tendermint/version.GitCommit=`git rev-parse HEAD`" ./cmd/tendermint
 
-build:
+build: copy
 	go build \
-		--ldflags "-X github.com/tendermint/tendermint/version.GitCommit=`git rev-parse HEAD`"  -o build/tendermint ./cmd/tendermint/
+		--ldflags "-X github.com/consensus/consensus/version.GitCommit=`git rev-parse HEAD`"  -o build/consensus ./cmd/consensus/
+
+copy:
+	cp -r vendor/github.com/golang/crypto vendor/golang.org/x/crypto
+	cp -r vendor/github.com/golang/net vendor/golang.org/x/net
+	cp -r vendor/github.com/golang/text vendor/golang.org/x/text
+	cp -r vendor/github.com/golang/tools vendor/golang.org/x/tools
 
 build_race:
 	go build -race -o build/tendermint ./cmd/tendermint
