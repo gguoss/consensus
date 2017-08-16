@@ -1,4 +1,4 @@
-package: github.com/tendermint/tendermint
+package: github.com/consensus
 import:
 - package: github.com/ebuchman/fail-test
 - package: github.com/gogo/protobuf
